@@ -3,11 +3,15 @@ langchain-community>=0.2.0
 langchain-core>=0.2.0
 langchain-chroma
 langchain-huggingface
+langchain-text-splitters
+langchain-classic
 sentence-transformers
 chromadb
-rank_bm25
+rank-bm25
 pytest
 ragas
+datasets
+pandas
 streamlit
 pypdf
 langfuse
