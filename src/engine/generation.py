@@ -7,12 +7,16 @@ from langfuse import Langfuse, get_client
 from langfuse.langchain import CallbackHandler
 from .retrieval import get_rerank_retriever
 
-# Initialize Langfuse client (reads LANGFUSE_PUBLIC_KEY, LANGFUSE_SECRET_KEY, LANGFUSE_HOST from env)
+# ==========================================
+# OBSERVABILITY / TRACING SETUP (LANGFUSE)
+# ==========================================
+# This automatically connects to the Langfuse server if the keys are available.
+# Langfuse tracks every step of the AI (time taken, cost, exact inputs/outputs).
 if os.environ.get("LANGFUSE_PUBLIC_KEY"):
     Langfuse()
 
-# Set up Langfuse tracing
 def get_langfuse_handler():
+    """Returns a tracking handler we can attach to our AI requests."""
     if not os.environ.get("LANGFUSE_PUBLIC_KEY"):
         print("Warning: LANGFUSE_PUBLIC_KEY not set. Local tracking disabled.")
         return None
@@ -20,21 +24,31 @@ def get_langfuse_handler():
     return CallbackHandler()
 
 def format_docs(docs):
-    """Format retrieved documents and include their source metadata for citation."""
+    """
+    Format retrieved documents and include their source metadata for citation.
+    This takes the raw Documents retrieved from our DB and turns them into a clean 
+    string block so the AI can read them easily.
+    """
     formatted = []
     for i, doc in enumerate(docs):
+        # We try to get the original filename, otherwise label it 'Chunk 1', etc.
         source = doc.metadata.get("source", f"Chunk {i+1}")
         formatted.append(f"[Source: {source}]\n{doc.page_content}")
     return "\n\n".join(formatted)
 
 def get_rag_chain():
-    """Initialize the RAG generation chain with strict citation prompt."""
+    """
+    Initialize the complete RAG (Retrieval-Augmented Generation) chain.
+    This connects the "Search Engine" to the "Brain".
+    """
     
-    # Using Llama-3.2 via Ollama (default local LLM)
-    # If you prefer a different provider (e.g., Fireworks, OpenAI), update this.
+    # 1. Provide the LLM (The Brain)
+    # Using Llama-3.2 via Ollama (a local, free model running on your machine)
+    # temperature=0 makes it factual and less "creative" (prevents hallucination)
     llm = ChatOllama(model="llama3.2:1b", temperature=0)
 
-    # Prompt emphasizing citations and constraints
+    # 2. Provide the Instructions (The Prompt)
+    # This is exactly what the AI sees when asked a question.
     system_prompt = """You are a precise, research assistant designed to answer user questions exclusively based on the provided context.
 
 Context documents:
@@ -47,14 +61,22 @@ Instructions:
 
 Question: """
     
+    # Create a template that will automatically fill in the {context} and {question}
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
         ("human", "{question}")
     ])
 
-    # In Phase 2 we use hybrid advanced retriever with cross-encoder reranking
+    # 3. Provide the Search Engine
+    # We use our advanced hybrid retriever with cross-encoder reranking
     retriever = get_rerank_retriever()
 
+    # 4. Chain everything together!
+    # - Run the retriever, then format the docs into a string
+    # - Pass the user's question straight through
+    # - Feed both into the Prompt
+    # - Feed the Prompt to the LLM
+    # - Extract purely the string output from the LLM
     rag_chain = (
         {"context": retriever | format_docs, "question": RunnablePassthrough()}
         | prompt
@@ -65,15 +87,19 @@ Question: """
     return rag_chain
 
 def generate_answer(query):
-    """Generate answer for a query, tracing with Langfuse if configured."""
+    """
+    Generate answer for a query, tracing with Langfuse if it's configured.
+    """
     chain = get_rag_chain()
     langfuse_handler = get_langfuse_handler()
     
+    # If Langfuse is enabled, we attach our tracking "callback" here
     config = {}
     if langfuse_handler:
         config["callbacks"] = [langfuse_handler]
         
     print(f"Generating answer for: '{query}'")
+    # Trigger the entire RAG chain!
     response = chain.invoke(query, config=config)
     return response
 
