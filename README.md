@@ -95,6 +95,18 @@ This will run the framework against the `golden_dataset.json` and print out the 
 
 ---
 
+## 🖼️ Screenshots
+
+### 1. Streamlit Web Interface
+![Streamlit UI](assets/streamlit_ui.png)
+*The user-friendly interface for document upload and interactive chat.*
+
+### 2. Langfuse Observability Dashboard
+![Langfuse Dashboard](assets/langfuse_dashboard.png)
+*Detailed tracing of retrieval steps, latencies, and LLM generation.*
+
+---
+
 ## 📁 Code Architecture Breakdown
 
 If you are new to coding, here is exactly how the files work together:
