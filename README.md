@@ -35,7 +35,13 @@ It goes far beyond a simple "Hello World" RAG tutorial by implementing **advance
 
 This application is designed to run entirely locally, meaning **your data never leaves your machine.**
 
-### 1. Install Dependencies
+### 1. Clone the Repository
+```bash
+git clone https://github.com/abhishekshukla15268-spec/RAG-application.git
+cd RAG-application
+```
+
+### 2. Install Dependencies
 Ensure you have Python 3.10+ installed, then run:
 ```bash
 python -m venv .venv
