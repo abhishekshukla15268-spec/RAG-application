@@ -1,0 +1,14 @@
+langchain>=0.2.0
+langchain-community>=0.2.0
+langchain-core>=0.2.0
+langchain-chroma
+langchain-huggingface
+sentence-transformers
+chromadb
+rank_bm25
+pytest
+ragas
+streamlit
+pypdf
+langfuse
+python-dotenv

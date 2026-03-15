@@ -1,0 +1,36 @@
+# Environment secrets — NEVER commit this
+.env
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Vector DB — large binary files, regenerated from data
+chroma_db/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Logs and evaluation output
+eval.log
+*.log
+
+# Data directory (PDFs — often large; re-ingest locally)
+# Comment out if you want to include sample data
+data/
+
+# Pytest cache
+.pytest_cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+.idea/

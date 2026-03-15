@@ -1,0 +1,82 @@
+[
+  {
+    "question": "What are the two major ways AI is reshaping online search?",
+    "ground_truth": "AI is reshaping search by replacing traditional search engines with LLM-based answer engines and by introducing AI-generated summaries like Google Overviews that provide answers directly without requiring users to click on websites.",
+    "contexts": [
+      "AI is reshaping online search in two overlapping ways: large language models such as ChatGPT and Copilot synthesize answers directly from text instead of returning a list of links.",
+      "Google’s AI Overviews summarize search results and present answers at the top of search pages, reducing the need for users to visit websites."
+    ]
+  },
+  {
+    "question": "Why are AI-generated summaries reducing website traffic?",
+    "ground_truth": "AI-generated summaries reduce website traffic because they provide direct answers within the search interface, eliminating the need for users to click on individual websites.",
+    "contexts": [
+      "When AI summaries appear in search results, users click on ranked websites only 8% of the time compared to 15% without AI summaries.",
+      "AI-generated summaries provide answers directly in the search interface, reducing the need for users to visit individual websites."
+    ]
+  },
+  {
+    "question": "What strategic shift is occurring in branding due to AI systems?",
+    "ground_truth": "Branding is shifting from paid advertising persuasion to AI-mediated recommendations where companies must ensure their ideas and data are associated with their brand so that AI systems recommend them.",
+    "contexts": [
+      "As consumers increasingly trust algorithmic recommendations, companies must ensure their ideas and distinctive concepts are associated with their brand.",
+      "Branding is moving from paid persuasion to AI-mediated recommendation where algorithms influence consumer decisions."
+    ]
+  },
+  {
+    "question": "How is traditional SEO becoming less effective?",
+    "ground_truth": "Traditional SEO is becoming less effective because AI systems provide synthesized answers directly, reducing the importance of website ranking and click-through behavior.",
+    "contexts": [
+      "Traditional search returned a ranked list of websites that users explored, but AI tools now provide complete answers directly.",
+      "This change collapses the traditional multi-step customer journey where businesses previously differentiated through website design and content."
+    ]
+  },
+  {
+    "question": "What is meant by engineering recall inside AI systems?",
+    "ground_truth": "Engineering recall inside AI systems means designing content so that AI models remember and cite a brand’s ideas, frameworks, data, or experts when generating answers.",
+    "contexts": [
+      "Companies should publish original data, name proprietary frameworks, and attach credentialed experts so AI systems associate insights with their brand.",
+      "LLMs are more likely to recall content that includes named studies, clear frameworks, and expert attribution."
+    ]
+  },
+  {
+    "question": "How did the retailer Nordpay adjust its marketing strategy in response to AI?",
+    "ground_truth": "Nordpay reduced advertising spending and shifted work in-house using generative AI tools to produce marketing content more efficiently.",
+    "contexts": [
+      "Nordpay reallocated advertising budgets away from agencies and toward in-house AI-enabled content production.",
+      "The company reduced advertising spend by 11% and cut agency spend by about 25% while using generative AI tools."
+    ]
+  },
+  {
+    "question": "Why is marketing now targeting algorithms instead of just customers?",
+    "ground_truth": "Marketing must now target algorithms because AI systems mediate customer interactions and often generate recommendations directly, shaping the customer’s first impression.",
+    "contexts": [
+      "AI systems synthesize product recommendations and information before customers visit websites.",
+      "In AI-mediated marketplaces, algorithms often determine the first impression a consumer receives about products or services."
+    ]
+  },
+  {
+    "question": "What role does structured content play in AI-driven discovery?",
+    "ground_truth": "Structured content helps AI systems understand and cite information more easily by organizing knowledge using clear definitions, steps, and schema markup.",
+    "contexts": [
+      "Companies should structure content so machines can parse authority and expertise using schema and authorship signals.",
+      "Clear explanations, structured steps, and machine-readable architecture help algorithms interpret content."
+    ]
+  },
+  {
+    "question": "What happened to Product Insight’s traffic after AI Overviews appeared?",
+    "ground_truth": "Product Insight experienced a significant decline in traffic, with some high-value pages losing about 67% of their visitors.",
+    "contexts": [
+      "Product Insight’s historically highest-value pages saw traffic decline by around 67% after AI Overviews appeared.",
+      "Google Overviews now appear for about 78% of their core product queries."
+    ]
+  },
+  {
+    "question": "What is the key strategic takeaway for companies in the AI search era?",
+    "ground_truth": "Companies must treat AI as an audience to influence by building clear expertise signals, consistent brand messaging, and authoritative content that AI systems can reference.",
+    "contexts": [
+      "Visibility is no longer earned through clicks but through presence inside AI-generated responses.",
+      "Companies must ensure their expertise, ideas, and brand signals are consistently visible across sources so AI systems recommend them."
+    ]
+  }
+]
