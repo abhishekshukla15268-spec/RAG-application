@@ -118,3 +118,27 @@ If you are new to coding, here is exactly how the files work together:
 - **`tests/test_rag.py`**: The "Grader". It runs the AI through a gauntlet of questions to mathematically score how smart and accurate it is.
 
 *All source code contains extensive beginner-friendly comments detailing exactly how the functions work line-by-line!*
+
+---
+
+## 🛠️ Troubleshooting
+
+### `ModuleNotFoundError: No module named 'langchain_community'`
+This usually happens if the virtual environment is not properly set up or if you are running the app outside of it.
+
+**Solution:**
+1. Ensure the `.venv` is created and activated:
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
+2. Reinstall dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Run the app using the `Makefile` or the full path to the streamlit binary:
+   ```bash
+   make start-ui
+   # OR
+   .venv/bin/streamlit run app.py
+   ```
